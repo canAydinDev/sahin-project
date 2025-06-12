@@ -256,6 +256,15 @@
     @apply flex flex-1 flex-col gap-6 rounded-2xl bg-cover p-6 shadow-lg;
   }
 
+  .bg-appointments {
+    @apply bg-[url('/assets/images/appointments-bg.png')] bg-cover bg-center bg-no-repeat;
+  }
+  .bg-pending {
+    @apply bg-[url('/assets/images/pending-bg.png')] bg-cover bg-center bg-no-repeat;
+  }
+  .bg-cancelled {
+    @apply bg-[url('/assets/images/cancelled-bg.png')] bg-cover bg-center bg-no-repeat;
+  }
   /* ==== Status Badge */
   .status-badge {
     @apply flex w-fit items-center gap-2 rounded-full px-4 py-2;
@@ -394,7 +403,7 @@
   }
 
   .shad-otp-slot {
-    @apply text-36-bold justify-center flex border border-gray-800  rounded-lg size-16 gap-4 !important;
+    @apply text-36-bold justify-center flex border border-gray-400  rounded-lg size-16 gap-4 !important;
   }
 
   .shad-alert-dialog {
