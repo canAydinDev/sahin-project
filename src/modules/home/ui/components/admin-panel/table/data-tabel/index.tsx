@@ -17,6 +17,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { Button } from "@/components/ui/button";
+import Image from "next/image";
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
@@ -35,23 +36,24 @@ export function DataTable<TData, TValue>({
   });
 
   return (
-    <div className="rounded-md border">
-      <Table>
-        <TableHeader>
+    <div className="data-table">
+      <Table className="shad-table">
+        <TableHeader className="bg-gray800">
           {table.getHeaderGroups().map((headerGroup) => (
-            <TableRow key={headerGroup.id}>
-              {headerGroup.headers.map((header) => {
-                return (
-                  <TableHead key={header.id}>
-                    {header.isPlaceholder
-                      ? null
-                      : flexRender(
-                          header.column.columnDef.header,
-                          header.getContext()
-                        )}
-                  </TableHead>
-                );
-              })}
+            <TableRow key={headerGroup.id} className="shad-table-row-header">
+              {headerGroup.headers.map((header) => (
+                <TableHead
+                  key={header.id}
+                  className="border border-gray-400  px-4 py-2"
+                >
+                  {header.isPlaceholder
+                    ? null
+                    : flexRender(
+                        header.column.columnDef.header,
+                        header.getContext()
+                      )}
+                </TableHead>
+              ))}
             </TableRow>
           ))}
         </TableHeader>
@@ -61,9 +63,13 @@ export function DataTable<TData, TValue>({
               <TableRow
                 key={row.id}
                 data-state={row.getIsSelected() && "selected"}
+                className="shad-table-row"
               >
                 {row.getVisibleCells().map((cell) => (
-                  <TableCell key={cell.id}>
+                  <TableCell
+                    key={cell.id}
+                    className="border border-gray-400 px-4 py-2"
+                  >
                     {flexRender(cell.column.columnDef.cell, cell.getContext())}
                   </TableCell>
                 ))}
@@ -71,29 +77,46 @@ export function DataTable<TData, TValue>({
             ))
           ) : (
             <TableRow>
-              <TableCell colSpan={columns.length} className="h-24 text-center">
-                No results.
+              <TableCell
+                colSpan={columns.length}
+                className="h-24 text-center border border-gray-300"
+              >
+                Sonuç bulunamadı.
               </TableCell>
             </TableRow>
           )}
         </TableBody>
       </Table>
-      <div className="flex items-center justify-end space-x-2 py-4">
+
+      <div className="table-actions ">
         <Button
           variant="outline"
-          size="sm"
+          size="lg"
+          className="shad-gray-btn"
           onClick={() => table.previousPage()}
           disabled={!table.getCanPreviousPage()}
         >
-          Geri
+          <Image
+            src="/assets/icons/arrow.svg"
+            alt="back"
+            width={24}
+            height={24}
+          />
         </Button>
         <Button
           variant="outline"
-          size="sm"
+          size="lg"
+          className="shad-gray-btn"
           onClick={() => table.nextPage()}
           disabled={!table.getCanNextPage()}
         >
-          İleri
+          <Image
+            src="/assets/icons/arrow.svg"
+            alt="back"
+            width={24}
+            height={24}
+            className="rotate-180"
+          />
         </Button>
       </div>
     </div>

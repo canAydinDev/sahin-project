@@ -1,29 +1,15 @@
 "use client";
 
 import { ColumnDef } from "@tanstack/react-table";
-import { Button } from "@/components/ui/button";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { MoreHorizontal } from "lucide-react";
+
 import { StatusBadge } from "../status-badge";
 import { formatDateTime } from "@/lib/utils";
 import Image from "next/image";
 import { Doctors } from "@/constants";
+import { AppointmentModal } from "../appointment-model";
+import { Appointment } from "../../../../../../../../types/appwrite.types";
 
-export type Payment = {
-  id: string;
-  amount: number;
-  status: "pending" | "processing" | "success" | "failed";
-  email: string;
-};
-
-export const columns: ColumnDef<Payment>[] = [
+export const columns: ColumnDef<Appointment>[] = [
   {
     header: "ID",
     cell: ({ row }) => <p className="text-14-medium">{row.index + 1}</p>,
@@ -77,9 +63,24 @@ export const columns: ColumnDef<Payment>[] = [
   },
   {
     id: "actions",
-    header: () => <div className="pl-4">Actions</div>,
-    cell: ({ row }) => {
-      return <div className="flex gap-1">AppointmentModal</div>;
+    header: () => <div className="pl-4">Randevu</div>,
+    cell: ({ row: { original: data } }) => {
+      return (
+        <div className="flex gap-1">
+          <AppointmentModal
+            patientId={data.patient.$id}
+            type="schedule"
+            userId={data.userId}
+            appointment={data}
+          />
+          <AppointmentModal
+            patientId={data.patient.$id}
+            type="cancel"
+            userId={data.userId}
+            appointment={data}
+          />
+        </div>
+      );
     },
   },
 ];
