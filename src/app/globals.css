@@ -339,7 +339,7 @@
   }
 
   .shad-gray-btn {
-    @apply border border-gray-900  cursor-pointer bg-gray-800  text-white !important;
+    @apply border border-gray-300  cursor-pointer bg-gray-800  text-white !important;
   }
 
   .shad-input-label {
@@ -391,11 +391,11 @@
   }
 
   .shad-table-row-header {
-    @apply border-b border-gray-800  text-light-200 hover:bg-transparent !important;
+    @apply border-b border-gray-800  text-gray-300 hover:bg-transparent !important;
   }
 
   .shad-table-row {
-    @apply border-b border-gray-800  text-light-200 !important;
+    @apply border-b border-gray-800  text-gray-300 !important;
   }
 
   .shad-otp {

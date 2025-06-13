@@ -49,6 +49,8 @@ export const PatientForm = () => {
       }
     } catch (error) {
       console.error(error);
+    } finally {
+      setIsLoading(false);
     }
   }
   return (
