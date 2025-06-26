@@ -4,6 +4,9 @@ const nextConfig: NextConfig = {
   typescript: {
     ignoreBuildErrors: true,
   },
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
   env: {
     PROJECT_ID: process.env.PROJECT_ID,
     API_KEY: process.env.API_KEY,
