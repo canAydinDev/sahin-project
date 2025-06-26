@@ -3,8 +3,6 @@
 import {
   DATABASE_ID,
   databases,
-  storage,
-  users,
   ID,
   Query,
   APPOINTMENT_COLLECTION_ID,
