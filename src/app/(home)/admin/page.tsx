@@ -1,25 +1,11 @@
 import { getRecentAppointmentList } from "@/lib/actions/appointment.actions";
 import { DataTable } from "@/modules/home/ui/components/admin-panel/table/data-tabel";
 import { StatCard } from "@/modules/home/ui/components/admin-panel/stat-card";
-import {
-  columns,
-  Payment,
-} from "@/modules/home/ui/components/admin-panel/table/columns";
+import { columns } from "@/modules/home/ui/components/admin-panel/table/columns";
 import Image from "next/image";
 import Link from "next/link";
 
-async function getData(): Promise<Payment[]> {
-  // Fetch data from your API here.
-  return [
-    {
-      id: "728ed52f",
-      amount: 100,
-      status: "pending",
-      email: "m@example.com",
-    },
-    // ...
-  ];
-}
+export const dynamic = "force-dynamic";
 
 const Admin = async () => {
   const appointments = await getRecentAppointmentList();
